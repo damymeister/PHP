@@ -23,10 +23,9 @@ function walidacja() {
     $args = 
      ['Nazwisko' => ['filter' => FILTER_VALIDATE_REGEXP,'options' => ['regexp' => '/^[A-Z]{1}[a-ząęłńśćźżó-]{1,25}$/']],
      'Kraje' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
-     'age' => ['filter' => FILTER_VALIDATE_REGEXP,'options' => ['regexp' => '/[1-9]{1,3}$/']],
+     'age' => FILTER_VALIDATE_INT,
      'e-mail' => FILTER_VALIDATE_EMAIL,
       'jezyki' => ['filter' => FILTER_SANITIZE_FULL_SPECIAL_CHARS, 'flags' =>FILTER_REQUIRE_ARRAY],
-      'radioboxy' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
      ];
      //przefiltruj dane z GET/POST zgodnie z ustawionymi w $args filtrami:
     $dane = filter_input_array(INPUT_POST, $args);
