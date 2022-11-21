@@ -21,7 +21,7 @@ $this->email=$email;
 }
     Public function show() {
         $t = '<p>Username: ' . $this->userName . ',';
-        $t .= '<p>Full time: ' . $this->fullName . ',';
+        $t .= '<p>Full name: ' . $this->fullName . ',';
         $t .= '<p>Password: ' . $this->passwd . ',';
         $t .= '<p>E-Mail: ' . $this->email . ',';
         $t .= '<p>Date: ' . $this->date . ',';
