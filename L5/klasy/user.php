@@ -86,5 +86,54 @@ public function getStatus()
 {
     return $this->status;
 }
+static function getAllUsers($plik){
+    $tab = json_decode(file_get_contents($plik));
+    //var_dump($tab);
+    foreach ($tab as $val){
+    echo "<p>".$val->userName." ".$val->fullName." ".$val->date."</p>";
+    }
+   }
+   function toArray(){
+    $arr=[
+    "userName" => $this->userName,
+    "fullName" => $this->fullName,
+    "passwd" => $this->passwd,
+    "email" => $this->email,
+    "date" => $this->date,
+    "status" => $this->status,
+    ];
+    return $arr;
+   }
+   function save($plik){
+    $tab = json_decode(file_get_contents($plik),true);
+    array_push($tab,$this->toArray());
+    file_put_contents($plik, json_encode($tab));
+   }
+   function saveXML()
+   {
+    $xml = simplexml_load_file('users.xml');
+    //dodajemy nowy element user (jako child)
+    $xmlCopy=$xml->addChild("user");
+    //do elementu dodajemy jego właściwości o określonej nazwie i treści
+    $xmlCopy->addChild("userName", $this->userName);
+    $xmlCopy->addChild("fullName", $this->fullName);
+    $xmlCopy->addChild("passwd", $this->passwd);
+    $xmlCopy->addChild("email", $this->email);
+    $xmlCopy->addChild("date", $this->date);
+    $xmlCopy->addChild("status", $this->status);
+    //zapisujemy zmodyfikowany XML do pliku:
+    $xml->asXML('users.xml'); 
+   }
+   static function getAllUsersFromXML()
+   {
+    $allUsers = simplexml_load_file('users.xml');
+    echo "<ul>";
+    foreach ($allUsers as $user):
+    $userName=$user->userName;
+    $date=$user->date;
+    echo "<li>$userName, $date, ... </li>";
+    endforeach;
+    echo "</ul>";
+   }
 }
 ?>

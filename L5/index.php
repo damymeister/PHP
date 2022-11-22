@@ -1,15 +1,3 @@
-
-<?php
- //include 'klasy/user.php';
- //$user1 = new User ('kp', 'Kubus Puchatek',
-// 'kubus@stumilowylas.pl', 'nielubietygryska');
- //$user1->show();
-// $UserNameCheck =  $user1->getUserName();
-// print($UserNameCheck);
-//$user1 -> setEmail('nowy@puchatek.pl');
-//$emailCheck =  $user1->getEmail();
-//print($emailCheck);
- ?>
 <?php
  include_once('klasy/user.php');
  include_once('klasy/RegistrationForm.php');
@@ -22,5 +10,11 @@ FILTER_SANITIZE_FULL_SPECIAL_CHARS)) {
  else{
  echo "<p>Poprawne dane rejestracji:</p>";
  $user->show();
+ $user->save("users.json");
+ echo "<b>Wyswietlam wszystkich uzytkownikow z pliku JSON</b>";
+ $user->getAllUsers("users.json");
+ $user->saveXML();
+ echo "<b>Wyswietlam wszystkich uzytkownikow z pliku XML</b>";
+ User::getAllUsersFromXML();
  }
  }
