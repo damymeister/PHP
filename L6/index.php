@@ -55,7 +55,7 @@
             $akcja = filter_input(INPUT_POST, "submit");
             switch ($akcja) {
                 case "Dodaj" : dodajdoBD($bd); break;
-                case "Pokaż" : echo $bd->select("select Nazwisko,Zamowienie from klienci", ["Nazwisko","Zamowienie"]); break;
+                case "Pokaż" : echo $bd->select("select Nazwisko,Zamowienie, Wiek from klienci", ["Nazwisko","Zamowienie","Wiek"]); break;
                 case "PHP" : echo $bd->select("select Nazwisko, Zamowienie from klienci where Zamowienie REGEXP 'PHP'", ["Nazwisko", "Zamowienie"]); break;
                 case "CPP" : echo $bd->select("select Nazwisko, Zamowienie from klienci where Zamowienie REGEXP 'CPP'", ["Nazwisko", "Zamowienie"]); break;
                 case "JAVA" : echo $bd->select("select Nazwisko, Zamowienie from klienci where Zamowienie REGEXP 'Java[[:>:]]'", ["Nazwisko", "Zamowienie"]); break;//REGEXP tam gdzie wyrazenie konczy sie na java to wyswietla (javascript sie nie lapie dzieki temu)
