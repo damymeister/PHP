@@ -1,6 +1,6 @@
 <?php
 include_once("user.php");
-$u = new User('Leo', 'Leonardo da vinci', 'leo@gmail.com', 'password');
+$u = new User('Leo', 'Leonardo da vinci', 'leo@gmail.com', 'haslo');
 $u->setStatus(2);
 session_start();
 $_SESSION['user'] = serialize($u);
